@@ -1,7 +1,7 @@
 include(cmake/CPM.cmake)
 include(FetchContent)
 
-find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets)
 
 function(myproject_setup_dependencies)
     if (NOT Qt6_FOUND)
