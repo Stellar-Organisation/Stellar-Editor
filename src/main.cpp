@@ -2,15 +2,15 @@
 #include <QWidget>
 
 void createAndShowWidget() {
-    QWidget w;
-    w.show();
-    QApplication::exec();
+  QWidget w;
+  w.show();
+  QApplication::exec();
 }
 
 int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
+  QApplication app(argc, argv);
 
-    createAndShowWidget();
+  createAndShowWidget();
 
-    return QApplication::exec();
+  return QApplication::exec();
 }
