@@ -36,16 +36,6 @@ jobs:
           xmake-version: latest
           actions-cache-folder: '.xmake-cache'
 
-      - name: Setup Cpp
-        uses: aminya/setup-cpp@v1
-        if: ${{ matrix.os != 'macos-latest' }}
-        with:
-          cmake: true
-          make: true
-          ccache: true
-          clangtidy: ${{ env.CLANG_TIDY_VERSION }}
-          cppcheck: true
-
       - name: Setup Cache
         uses: ./.github/actions/setup_cache
         with:
