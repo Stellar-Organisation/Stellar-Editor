@@ -4,6 +4,10 @@ on:
     branches:
       - main
       - dev
+  push:
+    branches:
+      - main
+      - dev
 
 env:
   CLANG_TIDY_VERSION: "16.0.0"
@@ -26,9 +30,6 @@ jobs:
         build_type:
           - Release
           - Debug
-        qt_package:
-          - "qt6-base-dev libqt6svg6-dev qt6-image-formats-plugins"
-          - "qtbase5-dev libqt5svg5-dev qt5-image-formats-plugins"
 
     steps:
       - uses: actions/checkout@v3

@@ -42,6 +42,13 @@ jobs:
           cppcheck: false
           gcovr: true
 
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: 6.6.1
+          target: 'desktop'
+          cache: 'true'
+
       - uses: xmake-io/github-action-setup-xmake@v1
         with:
           xmake-version: latest
