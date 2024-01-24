@@ -4,6 +4,10 @@ on:
     branches:
       - main
       - dev
+  push:
+    branches:
+      - main
+      - dev
 
 env:
   CLANG_TIDY_VERSION: "16.0.0"
@@ -68,4 +72,4 @@ jobs:
       - name: Unix - Test and coverage
         working-directory: ./build
         run: |
-          xmake run --yes --verbose --diagnosis
+          xmake run --yes --verbose --diagnosis test
