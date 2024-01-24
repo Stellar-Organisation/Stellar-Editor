@@ -38,3 +38,9 @@ cmake-build-*/
 # Project Related
 **/build/**
 **/Testing/**
+
+# Xmake Related
+.xmake
+build
+bin
+compile_commands.json

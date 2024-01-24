@@ -1,4 +1,4 @@
-#include <QTest>
+#include <QtTest>
 
 class TestQString final: public QObject
 {

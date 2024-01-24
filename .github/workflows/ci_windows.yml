@@ -1,4 +1,4 @@
-name: ci
+name: ci_windows
 on:
   pull_request:
     branches:
@@ -17,18 +17,12 @@ jobs:
 
       matrix:
         os:
-          - ubuntu-latest
-          - macos-latest
-        compiler:
-          - llvm
+          - windows-latest
         generator:
           - "Ninja"
         build_type:
           - Release
           - Debug
-        qt_package:
-          - "qt6-base-dev libqt6svg6-dev qt6-image-formats-plugins"
-          - "qtbase5-dev libqt5svg5-dev qt5-image-formats-plugins"
 
     steps:
       - uses: actions/checkout@v3
@@ -38,12 +32,15 @@ jobs:
           xmake-version: latest
           actions-cache-folder: '.xmake-cache'
 
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+      - name: Setup Cpp
+        uses: aminya/setup-cpp@v1
+        if: ${{ matrix.os != 'macos-latest' }}
         with:
-          version: 6.6.1
-          target: 'desktop'
-          cache: 'true'
+          cmake: true
+          make: true
+          ccache: true
+          clangtidy: ${{ env.CLANG_TIDY_VERSION }}
+          cppcheck: true
 
       - name: Setup Cache
         uses: ./.github/actions/setup_cache
@@ -52,35 +49,20 @@ jobs:
           build_type: ${{ matrix.build_type }}
           generator: ${{ matrix.generator }}
 
-      - name: Setup Cpp
-        uses: aminya/setup-cpp@v1
-        if: ${{ matrix.os != 'macos-latest' }}
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
         with:
-          compiler: ${{ matrix.compiler }}
-          make: true
-          ccache: true
-          clangtidy: ${{ env.CLANG_TIDY_VERSION }}
-          cppcheck: true
-
-      - name: Setup Cpp
-        uses: aminya/setup-cpp@v1
-        if: ${{ matrix.os == 'macos-latest' }}
-        with:
-          compiler: ${{ matrix.compiler }}
-          cmake: true
-          make: true
-          ccache: true
-          clangtidy: 15.0.0
-          cppcheck: true
+          version: 6.6.1
+          host: 'windows'
+          target: 'desktop'
+          cache: 'true'
 
       - name: Configure Xmake
         run: |
-          xmake f -m ${{matrix.build_type}} --verbose -y
-
+          xmake f -m ${{matrix.build_type}} --verbose -y -p windows
       - name: Build Xmake
         run: |
           xmake -v -j 4
-
       - name: Unix - Test and coverage
         working-directory: ./build
         run: |
