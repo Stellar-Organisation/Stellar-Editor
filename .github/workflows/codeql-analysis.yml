@@ -36,11 +36,13 @@ jobs:
         uses: aminya/setup-cpp@v1
         with:
           compiler: ${{ matrix.compiler }}
-          cmake: true
-          ccache: true
-          clangtidy: false
-          cppcheck: false
-          gcovr: true
+
+      - name: Install dependencies
+        run: |
+          sudo DEBIAN_FRONTEND=noninteractive apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y fonts-noto-cjk \
+              libpng-dev zlib1g-dev libjpeg-turbo8-dev \
+              libcurl4-openssl-dev libfreetype-dev libsqlite3-dev
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
@@ -74,4 +76,6 @@ jobs:
       - name: Unix - Test and coverage
         working-directory: ./build
         run: |
-          xmake run test
+          xmake run --yes --verbose --diagnosis test
+        env:
+          QT_QPA_PLATFORM: offscreen

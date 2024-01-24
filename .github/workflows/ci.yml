@@ -55,24 +55,8 @@ jobs:
 
       - name: Setup Cpp
         uses: aminya/setup-cpp@v1
-        if: ${{ matrix.os != 'macos-latest' }}
         with:
           compiler: ${{ matrix.compiler }}
-          make: true
-          ccache: true
-          clangtidy: ${{ env.CLANG_TIDY_VERSION }}
-          cppcheck: true
-
-      - name: Setup Cpp
-        uses: aminya/setup-cpp@v1
-        if: ${{ matrix.os == 'macos-latest' }}
-        with:
-          compiler: ${{ matrix.compiler }}
-          cmake: true
-          make: true
-          ccache: true
-          clangtidy: 15.0.0
-          cppcheck: true
 
       - name: Configure Xmake
         run: |
@@ -85,4 +69,4 @@ jobs:
       - name: Unix - Test and coverage
         working-directory: ./build
         run: |
-          xmake run test
+          xmake run --yes --verbose --diagnosis test

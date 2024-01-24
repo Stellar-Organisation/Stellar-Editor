@@ -63,11 +63,13 @@ jobs:
 
       - name: Configure Xmake
         run: |
-          xmake f -m ${{matrix.build_type}} --verbose -y -p windows
+          xmake f -m ${{matrix.build_type}} --verbose --yes -p windows
+
       - name: Build Xmake
         run: |
           xmake -v -j 4
+
       - name: Unix - Test and coverage
         working-directory: ./build
         run: |
-          xmake run test
+          xmake run --yes --verbose --diagnosis
