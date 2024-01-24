@@ -1,5 +1,5 @@
 name: auto-clang-format
-on: [pull_request, push]
+on: [pull_request]
 
 jobs:
   build:
