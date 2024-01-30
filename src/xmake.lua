@@ -11,6 +11,7 @@ target("Stellar-Editor")
 
     -- Add the source files
     add_files("**.cpp")
+    add_files("**.hpp")
 
     -- Add the -std=c++20 flag
     add_cxxflags("-std=c++20", "-lstdc++")
@@ -47,4 +48,4 @@ target("Stellar-Editor")
     -- Define the _CRT_SECURE_NO_WARNINGS macro for the MSVC compiler (in case)
     add_defines("_CRT_SECURE_NO_WARNINGS")
 
-    add_frameworks("QtWidgets")
+    add_frameworks("QtWidgets", "QtGui", "QtCore", "QtQuick", "QtQml", "QtQuickControls2", "QtQuickTemplates2", "QtQuick")
