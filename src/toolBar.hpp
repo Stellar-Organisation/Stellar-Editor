@@ -8,11 +8,11 @@
 #include <QToolBar>
 
 class ToolBar : public QToolBar {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    ToolBar(QWidget *parent = nullptr);
-    ~ToolBar();
+  ToolBar(QWidget *parent = nullptr);
+  ~ToolBar();
 };
 
-#endif //TOOLBAR_HPP
+#endif // TOOLBAR_HPP

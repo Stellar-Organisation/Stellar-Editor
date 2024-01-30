@@ -7,13 +7,12 @@
 
 #include <QMainWindow>
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
+class MainWindow : public QMainWindow {
+  Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow() override;
+  explicit MainWindow(QWidget *parent = nullptr);
+  ~MainWindow() override;
 };
 
-#endif //MAINWINDOW_HPP
+#endif // MAINWINDOW_HPP

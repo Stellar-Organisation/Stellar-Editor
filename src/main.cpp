@@ -1,9 +1,9 @@
+#include "closeBar.hpp"
+#include "customTopBar.hpp"
+#include "mainWindow.hpp"
+#include "toolBar.hpp"
 #include <QApplication>
 #include <QVBoxLayout>
-#include "mainWindow.hpp"
-#include "customTopBar.hpp"
-#include "toolBar.hpp"
-#include "closeBar.hpp"
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);

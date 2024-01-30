@@ -7,13 +7,12 @@
 
 #include <QToolBar>
 
-class CloseBar : public QToolBar
-{
-    Q_OBJECT
+class CloseBar : public QToolBar {
+  Q_OBJECT
 
 public:
-    explicit CloseBar(QWidget *parent = nullptr);
-    ~CloseBar() override;
+  explicit CloseBar(QWidget *parent = nullptr);
+  ~CloseBar() override;
 };
 
-#endif //CLOSEBAR_HPP
+#endif // CLOSEBAR_HPP

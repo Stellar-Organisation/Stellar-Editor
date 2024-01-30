@@ -4,10 +4,6 @@
 
 #include "mainWindow.hpp"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-{
-}
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {}
 
-MainWindow::~MainWindow()
-= default;
+MainWindow::~MainWindow() = default;

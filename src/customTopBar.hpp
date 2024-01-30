@@ -7,14 +7,12 @@
 
 #include <QWidget>
 
-class CustomTopBar : public QWidget
-{
-    Q_OBJECT
+class CustomTopBar : public QWidget {
+  Q_OBJECT
 
 public:
-    explicit CustomTopBar(QWidget *parent = nullptr);
-    ~CustomTopBar() override;
-
+  explicit CustomTopBar(QWidget *parent = nullptr);
+  ~CustomTopBar() override;
 };
 
-#endif //CUSTOMTOPBAR_HPP
+#endif // CUSTOMTOPBAR_HPP
